@@ -21,6 +21,6 @@ Therefore, a lot of people started projects to provide a solution for Home Assis
 
 | Problem | Cause | Solution |
 | --- | --- | --- |
-| High Availability | Home Assistant consists of two primary components: the smart home control software (eg. dashboard with buttons, which switch a device on and off) and the data series database (eg. room temperature since measurement began). Both components aren't configured for high availability. | + Feature 1: K3s with 3 nodes for container runtime<br/>+ Feature 2: Longhorn with 3 node for storage |
+| High Availability | Home Assistant consists of two primary components:<br />1. the smart home control software (eg. dashboard with buttons, which switch a device on and off)<br />2. and the data series database (eg. room temperature since measurement began).<br />Both components aren't configured for high availability. | + Feature 1: K3s with 3 nodes for container runtime<br/>+ Feature 2: Longhorn with 3 node for storage |
 | Maintainability |    |    |
 | Web Application Security |   |  + Feature 3: Web Application Firewall Sidecar with OWASP security rules |
