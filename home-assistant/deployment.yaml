@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudia-echo-app-waf-webapp-settings
+  namespace: cloudia-test
+data:
+  99-webapp-settings.conf: |
+    # Test: Pfad /attack-me deaktiviert Modsecurity
+    SecRule REQUEST_URI "@beginsWith /attack-me" "id:1001,phase:1,pass,nolog,ctl:ruleEngine=Off"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudia-echo-app
+  namespace: cloudia-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudia-echo-app
+  template:
+    metadata:
+      labels:
+        app: cloudia-echo-app
+    spec:
+      containers:
+      - name: cloudia-echo-waf-sidecar
+        image: owasp/modsecurity-crs:nginx-alpine
+        ports:
+        - containerPort: 8079
+        env:
+        - name: BACKEND
+          value: "http://localhost:8080"
+        - name: PORT
+          value: "8079"
+        - name: SSL_PORT
+          value: "8442"
+        volumeMounts:
+        - name: waf-global-settings-volume
+          mountPath: /etc/modsecurity.d/owasp-crs/rules/00-global-settings.conf
+          subPath: 00-global-settings.conf
+        - name: waf-webapp-settings-volume
+          mountPath: /etc/modsecurity.d/owasp-crs/rules/99-webapp-settings.conf
+          subPath: 99-webapp-settings.conf
+      - name: cloudia-echo-echoserver
+        image: gcr.io/kubernetes-e2e-test-images/echoserver:2.1
+        ports:
+        - containerPort: 8080
+      volumes:
+      - name: waf-global-settings-volume
+        configMap:
+          name: modsecurity-waf-global-settings
+          defaultMode: 0644
+      - name: waf-webapp-settings-volume
+        configMap:
+          name: cloudia-echo-app-waf-webapp-settings
+          defaultMode: 0644
