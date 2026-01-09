@@ -1,40 +1,40 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: cloudia-echo-app-waf-webapp-settings
-  namespace: cloudia-test
+  name: home-assistant-waf-webapp-settings
+  namespace: home-assistant
 data:
   99-webapp-settings.conf: |
-    # Test: Pfad /attack-me deaktiviert Modsecurity
-    SecRule REQUEST_URI "@beginsWith /attack-me" "id:1001,phase:1,pass,nolog,ctl:ruleEngine=Off"
+    # TODO: Home Assistant Web Application Security
+    # SecRule REQUEST_URI "@beginsWith /attack-me" "id:1001,phase:1,pass,nolog,ctl:ruleEngine=Off"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cloudia-echo-app
-  namespace: cloudia-test
+  name: home-assistant
+  namespace: home-assistant
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cloudia-echo-app
+      app: home-assistant
   template:
     metadata:
       labels:
-        app: cloudia-echo-app
+        app: home-assistant
     spec:
       containers:
-      - name: cloudia-echo-waf-sidecar
+      - name: home-assistant-waf-sidecar
         image: owasp/modsecurity-crs:nginx-alpine
         ports:
-        - containerPort: 8079
+        - containerPort: 8122
         env:
         - name: BACKEND
-          value: "http://localhost:8080"
+          value: "http://localhost:8123"
         - name: PORT
-          value: "8079"
+          value: "8122"
         - name: SSL_PORT
-          value: "8442"
+          value: "4122"
         volumeMounts:
         - name: waf-global-settings-volume
           mountPath: /etc/modsecurity.d/owasp-crs/rules/00-global-settings.conf
@@ -42,10 +42,26 @@ spec:
         - name: waf-webapp-settings-volume
           mountPath: /etc/modsecurity.d/owasp-crs/rules/99-webapp-settings.conf
           subPath: 99-webapp-settings.conf
-      - name: cloudia-echo-echoserver
-        image: gcr.io/kubernetes-e2e-test-images/echoserver:2.1
+      - name: home-assistant
+        image: ghcr.io/home-assistant/home-assistant:2025.12.5
+        securityContext:
+            privileged: true
+        resources:
+          requests:
+            memory: "256Mi"
+          limits:
+            memory: "512Mi"
         ports:
-        - containerPort: 8080
+        - containerPort: 8123
+        volumeMounts:
+        - mountPath: /config
+          name: home-assistant-pv-config
+        - mountPath: /config/configuration.yaml
+          name: home-assistant-configmap-configuration
+          subPath: configuration.yaml
+        - mountPath: /etc/localtime
+          name: home-assistant-pv-time
+          readOnly: true
       volumes:
       - name: waf-global-settings-volume
         configMap:
@@ -53,5 +69,12 @@ spec:
           defaultMode: 0644
       - name: waf-webapp-settings-volume
         configMap:
-          name: cloudia-echo-app-waf-webapp-settings
+          name: home-assistant-waf-webapp-settings
           defaultMode: 0644
+      - name: home-assistant-pv-config
+        persistentVolumeClaim:
+          claimName: home-assistant-pv-config
+      - name: home-assistant-pv-time
+        persistentVolumeClaim:
+          claimName: home-assistant-pv-time
+          readOnly: true
