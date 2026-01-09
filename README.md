@@ -12,7 +12,9 @@ Therefore, a lot of people started projects to provide a solution for Home Assis
 - Home Assistant High Availability with Kubernetes Distribution K3s - https://community.home-assistant.io/t/home-assistant-on-kubernetes/731745
 - https://blog.quadmeup.com/2025/04/07/how-to-run-home-assistant-in-kubernetes/
 
-** So do i!!!** :partying_face: **Why???** :roll_eyes: **Let's explain with a problem-solution-fit.** :handshake:
+**So do i!!!** :partying_face: \
+**Why???** :roll_eyes: \
+**Let's explain with a problem-solution-fit.** :handshake:
 
 > [!TIP]
 > Check out the community thread "High Availability in Home Assistant" about others opinions - https://community.home-assistant.io/t/high-availability-in-home-assistant/481358
