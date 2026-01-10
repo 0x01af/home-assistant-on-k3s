@@ -43,5 +43,16 @@ data:
   sensors.yaml: |-
     # Data Housekeeping: https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795
     - platform: filesize
+      scan_interval: 300
       file_paths:
         - "/config/home-assistant_v2.db"
+  recorder.yaml: |-
+    include:
+      domains:
+        - sensor
+        - switch
+        - media_player
+    exclude:
+      entities:
+        - sensor.last_boot
+        - sensor.date
