@@ -88,10 +88,7 @@ spec:
       - name: home-assistant-pv-config
         persistentVolumeClaim:
           claimName: home-assistant-pv-config
-      # - name: home-assistant-pv-time
-      #  persistentVolumeClaim:
-      #    claimName: home-assistant-pv-time
-      #    readOnly: true
+      # https://lf-onap.atlassian.net/wiki/spaces/DW/pages/16554174/Localtime+and+Timezones+in+helm+charts
       - name: home-assistant-localtime
         hostPath:
           path: /etc/localtime
