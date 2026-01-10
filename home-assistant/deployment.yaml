@@ -14,6 +14,16 @@ spec:
       labels:
         app: home-assistant-app
     spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+              - key: app-preferred
+                operator: In
+                values:
+                - home-assistant
       containers:
       - name: home-assistant-waf-sidecar
         image: owasp/modsecurity-crs:nginx-alpine
