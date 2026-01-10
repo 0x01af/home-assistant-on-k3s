@@ -1,1 +1,22 @@
-
+---
+# inspired by:
+# - https://faun.pub/running-your-home-assistant-on-kubernetes-part-ii-60eb46a73c61
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: home-assistant-configuration
+  namespace: home-assistant
+data:
+  known_devices.yaml: |
+  automations.yaml: |
+  configuration.yaml: |-
+    default_config:
+    frontend:
+      themes: !include_dir_merge_named themes
+    automation: !include automations.yaml
+    http:
+      use_x_forwarded_for: true
+      trusted_proxies:
+        - 10.0.0.0/8
+        - 127.0.0.1
+        - ::
