@@ -51,6 +51,7 @@ data:
       domains:
         - sensor
         - switch
+        - light
         - media_player
     exclude:
       entities:
