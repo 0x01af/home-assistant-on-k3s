@@ -59,9 +59,9 @@ spec:
         - mountPath: /config/configuration.yaml
           name: home-assistant-configmap-configuration
           subPath: configuration.yaml
-        - mountPath: /config/sensors/sensor_homeassistant_database.yaml
+        - mountPath: /config/sensors/sensor_homeassistant_specials.yaml
           name: home-assistant-configmap-configuration
-          subPath: sensor_homeassistant_database.yaml
+          subPath: sensor_homeassistant_specials.yaml
         - mountPath: /config/recorder.yaml
           name: home-assistant-configmap-configuration
           subPath: recorder.yaml
