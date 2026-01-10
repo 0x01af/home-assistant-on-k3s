@@ -18,19 +18,30 @@ data:
     script: !include scripts.yaml
     scene: !include scenes.yaml
     zone: !include zones.yaml
+    sensor: !include sensors.yaml
     
     ### Enhanced default configuration by home-assistant-on-k3s
-    # Data Housekeeping: https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795
     homeassistant:
+      # Configure your individual setting
+      unit_system: metric
+      currency: CHF
+      country: CH
+      time_zone: "Europe/Zurich"
+      external_url: "https://smarthome.osoz.ch"
+      internal_url: "https://smarthome.osoz.ch"
+      language: de-DE
       allowlist_external_dirs:
-        - /config
-    sensor:
-      - platform: filesize
-        file_paths:
-          - /config/home-assistant_v2.db
+        # Data Housekeeping: https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795
+        - "/config"
+      debug: false
     # Web Application Security: Configuration for Web Application Firewall Sidecar
     http:
       use_x_forwarded_for: true
       trusted_proxies:
         - 127.0.0.1
         - ::
+  sensors.yaml: |-
+    # Data Housekeeping: https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795
+    - platform: filesize
+      file_paths:
+        - "/config/home-assistant_v2.db"
