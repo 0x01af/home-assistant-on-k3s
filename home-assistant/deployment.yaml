@@ -11,17 +11,17 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: home-assistant
+  name: home-assistant-app
   namespace: home-assistant
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: home-assistant
+      app: home-assistant-app
   template:
     metadata:
       labels:
-        app: home-assistant
+        app: home-assistant-app
     spec:
       containers:
       - name: home-assistant-waf-sidecar
