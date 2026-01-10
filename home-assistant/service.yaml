@@ -5,7 +5,7 @@ metadata:
   namespace: home-assistant
 spec:
   ports:
-  - port: 443
+  - port: 8123
     targetPort: 8122
     protocol: TCP
   selector:
