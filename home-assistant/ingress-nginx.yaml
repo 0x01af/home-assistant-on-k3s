@@ -9,23 +9,23 @@ metadata:
     # configure prod certificate issueing
     # cert-manager.io/cluster-issuer: "letsencrypt-prod"
     cert-manager.io/acme-challenge-type: "http01"
-  name: cloudia-test-ingress
-  namespace: cloudia-test
+  name: home-assistant-ingress
+  namespace: home-assistant
 spec:
   ingressClassName: nginx
   rules:
-  - host: cloudia-test.osoz.ch
+  - host: smarthome.osoz.ch
     http:
       paths:
-      - path: /echo
+      - path: /
         pathType: Prefix
         backend:
           service:
-            name: cloudia-test-echo-svc
+            name: home-assistant-service
             port:
               number: 80
   tls:
   - hosts:
-    - cloudia-test.osoz.ch
+    - smarthome.osoz.ch
     # - prometheus.osoz.ch
-    secretName: cloudia-test-tls-secret
+    secretName: home-assistant-ingress-tls-secret
