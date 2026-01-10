@@ -17,15 +17,9 @@ data:
     automation: !include automations.yaml
     script: !include scripts.yaml
     scene: !include scenes.yaml
+    zone: !include zones.yaml
     
     ### Enhanced default configuration by home-assistant-on-k3s
-    # Home Assistant Customizing: Customize default home zone
-    zone:
-      - name: Home
-        latitude: 47.5612316
-        longitude: 9.1122952
-        radius: 17
-        icon: mdi:home
     # Data Housekeeping: https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795
     homeassistant:
       allowlist_external_dirs:
