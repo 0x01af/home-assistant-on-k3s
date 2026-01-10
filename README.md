@@ -14,6 +14,7 @@ Therefore, a lot of people started projects to provide a solution for Home Assis
 - Home Assistant Backup Strategies with scripts, crontab, and Home Assistant Backup - https://community.home-assistant.io/t/what-backup-strategy-when-running-home-assistant-in-docker/262539
 - Home Assistant Data Housekeeping with filtering, and purging - https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795
 - Home Assistant Data Analysis with InfluxDB and Grafana - https://www.influxdata.com/blog/how-integrate-gafana-home-assistant/
+- Home Assistant Best Practices - https://community.home-assistant.io/t/home-assistant-best-practices/27630
 
 **So do i!!!** :partying_face: \
 **Why???** :roll_eyes: \
@@ -32,6 +33,6 @@ Therefore, a lot of people started projects to provide a solution for Home Assis
 
 
 # Further information
-
+- How to install InfluxDB on Kubernetes (paywalled by Medium) - https://medium.com/@nikhil.nagarajappa/installing-influxdb-in-k8s-2fe0e0647431
 - How to install InfluxDB on Kubernetes (paywalled by Medium), https://medium.com/@nikhil.nagarajappa/installing-influxdb-in-k8s-2fe0e0647431
 - 
