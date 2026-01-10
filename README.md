@@ -12,7 +12,7 @@ Therefore, a lot of people started projects to provide a solution for Home Assis
 - Home Assistant High Availability with Kubernetes Distribution K3s - https://community.home-assistant.io/t/home-assistant-on-kubernetes/731745
 - https://blog.quadmeup.com/2025/04/07/how-to-run-home-assistant-in-kubernetes/
 - Home Assistant Backup Strategies with scripts, crontab, and Home Assistant Backup - https://community.home-assistant.io/t/what-backup-strategy-when-running-home-assistant-in-docker/262539
-- Home Assistant Data Housekeeping with filtering, and purging - https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795
+- Home Assistant Data Housekeeping with filtering, and purging - https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795, https://community.home-assistant.io/t/taming-the-recorder/271932
 - Home Assistant Data Optimization and Analytics with InfluxDB and Grafana - https://www.influxdata.com/blog/how-integrate-gafana-home-assistant/
 - Home Assistant Best Practices - https://community.home-assistant.io/t/the-home-assistant-cookbook-index/707144, https://community.home-assistant.io/t/home-assistant-best-practices/27630
 
