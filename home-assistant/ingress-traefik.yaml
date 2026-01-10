@@ -4,8 +4,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: cloudia-test-ingress
-  namespace: cloudia-test
+  name: home-assistant-ingress
+  namespace: home-assistant
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
     traefik.ingress.kubernetes.io/router.tls: "true"
@@ -16,25 +16,18 @@ metadata:
     cert-manager.io/acme-challenge-type: "http01"
 spec:
   rules:
-  - host: cloudia-test.osoz.ch
+  - host: smarthome.osoz.ch
     http:
       paths:
-      - path: /echo
+      - path: /
         pathType: Prefix
         backend:
           service:
-            name: cloudia-test-echo-svc
-            port:
-              number: 80
-      - path: /attack-me
-        pathType: Prefix
-        backend:
-          service:
-            name: cloudia-test-echo-svc
+            name: home-assistant-service
             port:
               number: 80
   tls:
   - hosts:
-    - cloudia-test.osoz.ch
+    - smarthome.osoz.ch
     # - prometheus.osoz.ch
-    secretName: cloudia-test-tls-secret
+    secretName: home-assistant-ingress-tls-secret
