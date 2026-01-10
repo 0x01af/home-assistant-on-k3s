@@ -85,3 +85,16 @@ data:
       entities:
         - sensor.last_boot
         - sensor.date
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: home-assistant-pvc-config
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 16Gi
+  storageClassName: longhorn
+---
