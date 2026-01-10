@@ -1,19 +1,4 @@
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: home-assistant
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: home-assistant-waf-webapp-settings
-  namespace: home-assistant
-data:
-  99-webapp-settings.conf: |
-    # TODO: Home Assistant Web Application Security
-    # SecRule REQUEST_URI "@beginsWith /attack-me" "id:1001,phase:1,pass,nolog,ctl:ruleEngine=Off"
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
