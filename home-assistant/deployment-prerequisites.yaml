@@ -7,6 +7,17 @@ metadata:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: modsecurity-waf-global-settings
+  namespace: "home-assistant"
+  annotations:
+    reflector.v1.k8s.emberstack.com/reflects: "c4m-general/modsecurity-waf-global-settings"
+    reflector.v1.k8s.emberstack.com/reflected-version: ""
+data:
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
   name: home-assistant-waf-webapp-settings
   namespace: home-assistant
 data:
