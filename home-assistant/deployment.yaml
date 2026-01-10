@@ -66,8 +66,11 @@ spec:
         - mountPath: /config/recorder.yaml
           name: home-assistant-configmap-configuration
           subPath: recorder.yaml
+        #- mountPath: /etc/localtime
+        #  name: home-assistant-pv-time
+        #  readOnly: true
         - mountPath: /etc/localtime
-          name: home-assistant-pv-time
+          name: home-assistant-localtime
           readOnly: true
       volumes:
       - name: waf-global-settings-volume
@@ -85,7 +88,10 @@ spec:
       - name: home-assistant-pv-config
         persistentVolumeClaim:
           claimName: home-assistant-pv-config
-      - name: home-assistant-pv-time
-        persistentVolumeClaim:
-          claimName: home-assistant-pv-time
-          readOnly: true
+      # - name: home-assistant-pv-time
+      #  persistentVolumeClaim:
+      #    claimName: home-assistant-pv-time
+      #    readOnly: true
+      - name: home-assistant-localtime
+        hostPath:
+          path: /etc/localtime
