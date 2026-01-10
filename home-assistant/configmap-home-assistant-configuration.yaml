@@ -19,6 +19,7 @@ data:
     scene: !include scenes.yaml
     zone: !include zones.yaml
     sensor: !include sensors.yaml
+    recorder: !include recorder.yaml
     
     ### Enhanced default configuration by home-assistant-on-k3s
     homeassistant:
@@ -47,6 +48,7 @@ data:
       file_paths:
         - "/config/home-assistant_v2.db"
   recorder.yaml: |-
+    # Data Housekeeping: https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795
     include:
       domains:
         - sensor
