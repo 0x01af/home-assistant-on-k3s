@@ -71,6 +71,10 @@ spec:
         configMap:
           name: home-assistant-waf-webapp-settings
           defaultMode: 0644
+      - name: home-assistant-configmap-configuration
+        configMap:
+          name: home-assistant-configuration
+          defaultMode: 0644
       - name: home-assistant-pv-config
         persistentVolumeClaim:
           claimName: home-assistant-pv-config
