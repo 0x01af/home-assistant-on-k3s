@@ -13,7 +13,7 @@ Therefore, a lot of people started projects to provide a solution for Home Assis
 - https://blog.quadmeup.com/2025/04/07/how-to-run-home-assistant-in-kubernetes/
 - Home Assistant Backup Strategies with scripts, crontab, and Home Assistant Backup - https://community.home-assistant.io/t/what-backup-strategy-when-running-home-assistant-in-docker/262539
 - Home Assistant Data Housekeeping with filtering, and purging - https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795, https://community.home-assistant.io/t/taming-the-recorder/271932
-- Home Assistant Data Optimization and Analytics with InfluxDB and Grafana - https://www.influxdata.com/blog/how-integrate-gafana-home-assistant/
+- Home Assistant Data Analytics with VictoriaMetrics and Grafana - https://github.com/VictoriaMetrics-Community/homeassistant-addon-victoriametrics, https://www.influxdata.com/blog/how-integrate-gafana-home-assistant/
 - Home Assistant Best Practices - https://community.home-assistant.io/t/the-home-assistant-cookbook-index/707144, https://community.home-assistant.io/t/home-assistant-best-practices/27630
 
 **So do i!!!** :partying_face: \
@@ -27,10 +27,10 @@ Therefore, a lot of people started projects to provide a solution for Home Assis
 
 | Problem | Cause | Solution |
 | --- | --- | --- |
-| High Availability | Home Assistant consists of two primary components:<br />1. the smart home control software (eg. dashboard with buttons, which switch a device on and off)<br />2. and the data series database (eg. room temperature since measurement began).<br />Both components have been implemented without redundancy support! | + Feature 1: K3s with 3 nodes for container runtime<br/>+ Feature 2: Longhorn with 3 node for storage |
+| High Availability | Home Assistant consists of two primary components:<br />1. the smart home control software (eg. dashboard with buttons, which switch a device on and off)<br />2. and the state database (eg. room temperature for last 10 days).<br />Both components have been implemented without redundancy support! | + Feature 1: K3s with 3 nodes for high-available container runtime<br/>+ Feature 2: Longhorn with 3 node for high-available storage |
 | Maintainability |    |    |
 | Web Application Security |   |  + Feature 3: Web Application Firewall Sidecar with OWASP security rules |
-| Data Housekeeping | Home Assistant is primarly designed to control and display the current state of your smart home.<br />Historical data are not in focus! | + Feature x: Home Assistant Configuration has been enhanced with database housekeeping (-> configuration_recorder.yaml). |
+| Data Housekeeping | Home Assistant is primarly designed to control and display the current state of your smart home.<br />Longterm historical data are not in focus! | + Feature x: Home Assistant Configuration has been enhanced with database housekeeping (-> configuration_recorder.yaml). |
 
 
 # Further information
