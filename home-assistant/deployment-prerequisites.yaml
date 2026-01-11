@@ -56,7 +56,7 @@ data:
       time_zone: "Europe/Zurich"
       external_url: "https://smarthome.osoz.ch"
       internal_url: "https://smarthome.osoz.ch"
-      language: de-DE
+      language: "de-CH"
       allowlist_external_dirs:
         # Data Housekeeping: https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795
         - "/config"
