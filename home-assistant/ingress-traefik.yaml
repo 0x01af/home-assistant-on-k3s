@@ -1,18 +1,6 @@
 # inspired by:
 # - https://traefik.io/blog/secure-web-applications-with-traefik-proxy-cert-manager-and-lets-encrypt (ingress resource)
 # - https://www.digitalocean.com/community/tutorials/how-to-secure-your-site-in-kubernetes-with-cert-manager-traefik-and-let-s-encrypt (ingress resource)
-# - https://devopsx.com/traefik-ingress-redirect-http-to-https/
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: redirect-to-https
-  namespace: 
-spec:
-  redirectRegex:
-    regex: "^http://(.*)"
-    replacement: "https://$1"
-    permanent: true
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
