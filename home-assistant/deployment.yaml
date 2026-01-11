@@ -43,8 +43,9 @@ spec:
         - name: waf-webapp-settings-volume
           mountPath: /etc/modsecurity.d/owasp-crs/rules/99-webapp-settings.conf
           subPath: 99-webapp-settings.conf
+      # Home-Assistant: https://github.com/home-assistant/core/pkgs/container/home-assistant/versions?filters%5Bversion_type%5D=tagged
       - name: home-assistant
-        image: ghcr.io/home-assistant/home-assistant:2025.12.5
+        image: ghcr.io/home-assistant/home-assistant:2026.1.0
         securityContext:
             privileged: true
         resources:
