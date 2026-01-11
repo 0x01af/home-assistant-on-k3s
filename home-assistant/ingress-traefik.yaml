@@ -13,16 +13,16 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-    - host:
-      http: sub.domain.example
+    - host: smarthome.osoz.ch
+      http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: frontend
+                name: home-assistant-service
                 port:
-                  number: 80
+                  number: 8123
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
