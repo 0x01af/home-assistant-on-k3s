@@ -7,11 +7,11 @@ Unfortunately, Home Assistant doesn't feature any kind of high availability. And
 
 Therefore, a lot of people started projects to provide a solution for Home Assistant High Availability or Home Assistant Operation Simplification:
 - Home Assistant High Availability
--- with Docker Swarm - https://github.com/cvb941/HAHA
--- with Linbit DRBD, Pacemaker, Corosync, and Docker (published: June 18, 2024) - https://linbit.com/blog/home-assistant-high-availability/
--- with Kubernetes Distribution K3s - https://jaygould.co.uk/2024-01-01-setting-up-home-assistant-kubernetes-k3s/
--- with Kubernetes Distribution K3s - https://community.home-assistant.io/t/home-assistant-on-kubernetes/731745
--- with Kubernetes - https://blog.quadmeup.com/2025/04/07/how-to-run-home-assistant-in-kubernetes/
+  - with Docker Swarm - https://github.com/cvb941/HAHA
+  - with Linbit DRBD, Pacemaker, Corosync, and Docker (published: June 18, 2024) - https://linbit.com/blog/home-assistant-high-availability/
+  - with Kubernetes Distribution K3s - https://jaygould.co.uk/2024-01-01-setting-up-home-assistant-kubernetes-k3s/
+  - with Kubernetes Distribution K3s - https://community.home-assistant.io/t/home-assistant-on-kubernetes/731745
+  - with Kubernetes - https://blog.quadmeup.com/2025/04/07/how-to-run-home-assistant-in-kubernetes/
 - Home Assistant Backup Strategies with scripts, crontab, and Home Assistant Backup - https://community.home-assistant.io/t/what-backup-strategy-when-running-home-assistant-in-docker/262539
 - Home Assistant Data Housekeeping with filtering, and purging - https://community.home-assistant.io/t/how-to-keep-your-recorder-database-size-under-control/295795, https://community.home-assistant.io/t/taming-the-recorder/271932
 - Home Assistant Data Analytics with VictoriaMetrics and Grafana - https://github.com/VictoriaMetrics-Community/homeassistant-addon-victoriametrics, https://www.influxdata.com/blog/how-integrate-gafana-home-assistant/
