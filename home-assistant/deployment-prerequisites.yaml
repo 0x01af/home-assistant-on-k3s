@@ -85,6 +85,10 @@ data:
       entities:
         - sensor.last_boot
         - sensor.date
+  automations.yaml: |
+  scripts.yaml: |
+  scenes.yaml: |
+  zones.yaml: |
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
