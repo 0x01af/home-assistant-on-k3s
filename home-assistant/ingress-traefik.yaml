@@ -10,8 +10,8 @@ metadata:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
     traefik.ingress.kubernetes.io/router.middlewares: traefik-redirect-to-https@kubernetescrd
-    kubernetes.io/ingress.class: traefik
 spec:
+  ingressClassName: traefik
   rules:
     - host: smarthome.osoz.ch
       http:
@@ -38,6 +38,7 @@ metadata:
     # cert-manager.io/cluster-issuer: "letsencrypt-prod"
     cert-manager.io/acme-challenge-type: "http01"
 spec:
+  ingressClassName: traefik
   rules:
   - host: smarthome.osoz.ch
     http:
