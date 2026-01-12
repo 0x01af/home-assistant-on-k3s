@@ -46,6 +46,8 @@ spec:
       # Home-Assistant: https://github.com/home-assistant/core/pkgs/container/home-assistant/versions?filters%5Bversion_type%5D=tagged
       - name: home-assistant
         image: ghcr.io/home-assistant/home-assistant:2026.1.0
+        # command: ["/bin/sh"]
+        # args: ["-c", "wget -O - https://get.hacs.xyz | bash -"]
         securityContext:
             privileged: true
         resources:
