@@ -26,17 +26,6 @@ spec:
       containers:
       - name: zigbee2mqtt
         image: koenkk/zigbee2mqtt:latest
-        env:
-          - name: TZ
-            value: Europe/Zurich
-          - name: ZIGBEE2MQTT_CONFIG_MQTT_SERVER
-            value: "mqtt://mosquitto-service.homeassistant.svc.cluster.local:8883"
-          - name: ZIGBEE2MQTT_CONFIG_MQTT_USER
-            value: "mqtt-user"
-          - name: ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD
-            value: "password"
-          - name: ZIGBEE2MQTT_CONFIG_HOMEASSISTANT
-            value: "true"
         securityContext:
           privileged: true
         ports:
