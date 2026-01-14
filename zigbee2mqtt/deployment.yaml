@@ -36,6 +36,9 @@ spec:
           - mountPath: /app/data/configuration.yaml
             name: zigbee2mqtt-configmap-configuration
             subPath: configuration.yaml
+          - mountPath: /app/data/secret.yaml
+            name: zigbee2mqtt-secret
+            readOnly: true
           - name: zigbee2mqtt-udev
             mountPath: /run/udev
           - name: ttyacm
@@ -50,3 +53,6 @@ spec:
         - name: ttyacm
           hostPath:
             path: /dev/ttyACM0
+        - name: zigbee2mqtt-secret
+          secret:
+            secretName: zigbee2mqtt-secret
