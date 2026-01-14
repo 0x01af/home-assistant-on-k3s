@@ -1,1 +1,52 @@
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zigbee2mqtt
+  namespace: home-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zigbee2mqtt
+  template:
+    metadata:
+      labels:
+        app: zigbee2mqtt
+    spec:
+      # nodeselector
+      containers:
+      - name: zigbee2mqtt
+        image: koenkk/zigbee2mqtt:latest
+        env:
+          - name: TZ
+            value: Europe/Zurich
+          - name: ZIGBEE2MQTT_CONFIG_MQTT_SERVER
+            value: "mqtt://mosquitto-service.homeassistant.svc.cluster.local:8883"
+          - name: ZIGBEE2MQTT_CONFIG_MQTT_USER
+            value: "mqtt-user"
+          - name: ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD
+            value: "password"
+          - name: ZIGBEE2MQTT_CONFIG_HOMEASSISTANT
+            value: "true"
+        securityContext:
+          privileged: true
+        ports:
+          - containerPort: 8080
+        volumeMounts:
+          - name: zigbee2mqtt-data
+            mountPath: /app/data
+          - name: zigbee2mqtt-udev
+            mountPath: /run/udev
+          - name: ttyacm
+            mountPath: /dev/ttyACM0
+      volumes:
+        - name: zigbee2mqtt-data
+          persistentVolumeClaim:
+            claimName: zigbee2mqtt-data
+        - name: zigbee2mqtt-udev
+          hostPath:
+            path: /run/udev
+        - name: ttyacm
+          hostPath:
+            path: /dev/ttyACM0
