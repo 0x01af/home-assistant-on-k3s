@@ -36,6 +36,15 @@ Therefore, a lot of people started projects to provide a solution for Home Assis
 | Data Housekeeping | Home Assistant is primarly designed to control and display the current state of your smart home.<br />Longterm historical data are not in focus! | + Feature x: Home Assistant Configuration has been enhanced with database housekeeping (-> configuration_recorder.yaml). |
 
 
+# Architecture
+
+| Component | Software | Version | Ingress | Service | Container | Comments |
+| ---  | ---  | ---  | ---  | ---  | ---  | ---  |
+| Home Assistant | Home Assistant | v2026.1.0 | http[s]://home-assistant.home.local<br />allowlist: all | 8079: Sidecar-WAF<br />8080: Home Assistant Dashboard | home-assistant | _ |
+| MQTT Broker | Mosquitto | 2.0.22 | http[s]://mqtt.home.local<br />- allowlist: private-only | 8081: Mosquitto Frontend<br />8883: Mosquitto MQTT Brocker (by tcp) | mqtt | _ |
+| Zigbee Gateway | Zigbee2MQTT | 2.7.2 | http[s]://zigbee2mqtt.home.local<br />- allowlist: private-only | 8081: Zigbee2MQTT Frontend | zigbee2mqtt | _ |
+
+
 # Further information
 - How to install InfluxDB on Kubernetes (paywalled by Medium), https://medium.com/@nikhil.nagarajappa/installing-influxdb-in-k8s-2fe0e0647431
  
