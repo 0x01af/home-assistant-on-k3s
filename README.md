@@ -41,7 +41,7 @@ Therefore, a lot of people started projects to provide a solution for Home Assis
 | Component | Software | Version | Ingress | Service | Container | Comments |
 | ---  | ---  | ---  | ---  | ---  | ---  | ---  |
 | Home Assistant | Home Assistant | v2026.1.0 | http[s]://home-assistant.home.local<br />allowlist: all | 8079: Sidecar-WAF<br />8080: Home Assistant Dashboard | home-assistant | _ |
-| MQTT Broker | Mosquitto | 2.0.22 | http[s]://mqtt.home.local<br />- allowlist: private-only | 8081: Mosquitto Frontend<br />8883: Mosquitto MQTT Brocker (by tcp) | mqtt | _ |
+| MQTT Broker | Mosquitto | 2.0.22 | http[s]://mqtt.home.local<br />- allowlist: private-only | 8081: Mosquitto Frontend<br />8883: Mosquitto MQTT Brocker (by tcp) | mosquitto | _ |
 | Zigbee Gateway | Zigbee2MQTT | 2.7.2 | http[s]://zigbee2mqtt.home.local<br />- allowlist: private-only | 8081: Zigbee2MQTT Frontend | zigbee2mqtt | _ |
 
 
